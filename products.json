@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "image":"img1.jpg",
+        "name":"product 1",
+        "price":100
+    },
+    {
+        "id":2,
+        "image":"img1.jpg",
+        "name":"product 2",
+        "price":200
+    },
+    {
+        "id":3,
+        "image":"img1.jpg",
+        "name":"product 3",
+        "price":300
+    },
+    {
+        "id":4,
+        "image":"img1.jpg",
+        "name":"product 4",
+        "price":400
+    },
+    {
+        "id":5,
+        "image":"img1.jpg",
+        "name":"product 5",
+        "price":500
+    }
+]

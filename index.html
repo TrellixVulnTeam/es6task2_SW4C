@@ -30,12 +30,45 @@
   <div class="container">
     <!--header section start-->
     <header>
-      
+      <div class="wrapper">
+        <h1 class="logo">
+            <a href="homepage.html" title="Movieaddicts" target="_self">
+                SHOPPING CART
+            </a>
+        </h1>
+        <nav class="menus">
+            <ul>
+                <li><a href="index.html" title="Home" target="_self">Home</a></li>
+                <li><a href="Products.html" title="My Products" target="_self">My Products</a></li>
+            </ul>
+        </nav>
+
+        <button class="logout-button logout">Logout</button>
+    </div>
     </header>
     <!--header section start-->
     <!--main section start-->
     <main>
-
+      <div class="home-section">
+        <div class="wrapper">
+          <h2>Shopping Items</h2>
+          <ul class="page-item">
+            <li class="page-item-image">
+            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self">
+                <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+            </a>
+            </li>
+            <li>
+             <a href="details.html?id=${i.id}&type=${content_type}" title="${i.title}" target="_self" class="pagination-title">${i.title}</a>
+             </li>  
+             <li>
+             <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+                    view details
+             </a>
+             </li>
+        </ul>
+        </div>
+      </div>
     </main>
     <!--main section end-->
 
