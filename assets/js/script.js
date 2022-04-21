@@ -32,9 +32,10 @@ let products=[
     }
 ];
 
-
+if($('.home-section')){
+    $(".shopping-item").html("");
 for(i=0;i<=products.length-1;i++) {
-  $(".page-item").append(
+  $(".shopping-item").append(
     `            <li class="page-item-image">
     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
         <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Product">
@@ -50,8 +51,8 @@ for(i=0;i<=products.length-1;i++) {
      <button class="addcart" data-id="${products[i].id}">Add to cart</button>
      </li>`);  
 }
+}
 
-})
 
 $(".page-item").on("click","button",function(){
     if(!(localStorage.getItem("products"))) {
@@ -74,6 +75,8 @@ $(".page-item").on("click","button",function(){
     alert("added to cart");
 
 })
+
+
 if($(".added-products")){
     let addedproducts = JSON.parse(localStorage.getItem("products"));
     
@@ -81,8 +84,7 @@ if($(".added-products")){
 
 
 
-
-
+})
 
 
 
