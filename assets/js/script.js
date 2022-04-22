@@ -1,49 +1,54 @@
-$(document).ready(function () {
     let products = [{
-            "id": 1,
-            "image": "assets/images/1.webp",
-            "name": "product 1",
-            "price": 100,
-            "description":"This is product 1.Looks really awesome try it"
-        },
-        {
-            "id": 2,
-            "image": "assets/images/2.jpeg",
-            "name": "product 2",
-            "price": 200,
-            "description":"This is product 2.Looks really awesome try it"
-        },
-        {
-            "id": 3,
-            "image": "assets/images/3.jpg",
-            "name": "product 3",
-            "price": 300,
-            "description":"This is product 3.Looks really awesome try it"
-        },
-        {
-            "id": 4,
-            "image": "assets/images/4.jpeg",
-            "name": "product 4",
-            "price": 400,
-            "description":"This is product 4.Looks really awesome try it"
-        },
-        {
-            "id": 5,
-            "image": "assets/images/5.jpg",
-            "name": "product 5",
-            "price": 500,
-            "description":"This is product 5.Looks really awesome try it"
-        }
-    ];
+                "id": 1,
+                "image": "assets/images/1.webp",
+                "name": "product 1",
+                "price": 100,
+                "description": "This is product 1.Looks really awesome try it"
+            },
+            {
+                "id": 2,
+                "image": "assets/images/2.jpeg",
+                "name": "product 2",
+                "price": 200,
+                "description": "This is product 2.Looks really awesome try it"
+            },
+            {
+                "id": 3,
+                "image": "assets/images/3.jpg",
+                "name": "product 3",
+                "price": 300,
+                "description": "This is product 3.Looks really awesome try it"
+            },
+            {
+                "id": 4,
+                "image": "assets/images/4.jpeg",
+                "name": "product 4",
+                "price": 400,
+                "description": "This is product 4.Looks really awesome try it"
+            },
+            {
+                "id": 5,
+                "image": "assets/images/5.jpg",
+                "name": "product 5",
+                "price": 500,
+                "description": "This is product 5.Looks really awesome try it"
+            }
+        ],
+        products_added = document.querySelector(".products-added"),
+        home_section = document.querySelector(".home-section"),
+        shopping_items = document.querySelector(".shopping-items"),
+        product_details = document.querySelector(".details"),
+        product_detail_info = document.querySelector(".product-detail-info"),
+        added_items = document.querySelector(".added-items");
 
     let prod_added = JSON.parse(localStorage.getItem('products'));
     if (prod_added !== null) {
-        prod_added.forEach(i => {
-            console.log(i);
-        })
-        $(".products-added").html(prod_added.length);
-        prod_added.forEach(i => {
-            $(".added-items").append(`
+
+        products_added.innerHTML = prod_added.length;
+        if (!(added_items === null)) {
+            prod_added.forEach(i => {
+                let item =
+                    `
         <ul class="shopping-item-info"> 
                <li class="shopping-item-image">
     <a href="details.html?id=${products[i].id}" title="Get Details" target="_self">
@@ -59,18 +64,24 @@ $(document).ready(function () {
      </a>
      </li>
      </ul>    
-        `);
-        })
+        `;
+                added_items.innerHTML += item;
+            })
+
+        }
     } else {
-        $(".products-added").html("0");
+        products_added.innerHTML = "0";
 
     }
 
-    if ($('.home-section').length > 0) {
-        $(".shopping-items").html("");
-        for (i = 0; i <= products.length - 1; i++) {
-            $(".shopping-items").append(
+    if (!(home_section === null)) {
+        shopping_items.innerHTML = "";
+        products.forEach(i => () => {
 
+        })
+
+        products.forEach((j, i) => {
+            let shopping_item_data =
                 `   <ul class="shopping-item-info"> 
                <li class="shopping-item-image">
     <a href="details.html?id=${products[i].id}" title="Get Details" target="_self">
@@ -88,41 +99,44 @@ $(document).ready(function () {
      <li>
      <button class="addcart" data-id="${products[i].id - 1}">Add to cart</button>
      </li>
-     </ul>
-     `);
-        }
+     </ul>`;
+
+            shopping_items.innerHTML += shopping_item_data;
+            add_cart = document.querySelectorAll(".addcart");
+            add_cart.forEach(i => i.addEventListener("click", function () {
+                if (!(localStorage.getItem("products"))) {
+                    localStorage.setItem("products", '[]');
+                }
+                let newid = this.getAttribute('data-id');
+                let old_data = JSON.parse(localStorage.getItem("products"));
+                console.log(old_data);
+                let repeated_id = false;
+                old_data.forEach(i => {
+                    if (i === newid) {
+                        repeated_id = true;
+                    }
+                })
+                if (repeated_id === false) {
+                    old_data.push(newid);
+
+                }
+                localStorage.setItem("products", JSON.stringify(old_data));
+                alert("added to cart");
+                let prod_added = JSON.parse(localStorage.getItem("products"));
+                products_added.innerHTML = prod_added.length;
+            }));
+        })
+
     }
 
-
-    $(".shopping-items").on("click", "button", function () {
-        if (!(localStorage.getItem("products"))) {
-            localStorage.setItem("products", '[]');
-        }
-        let newid = $(this).attr('data-id');
-        let old_data = JSON.parse(localStorage.getItem("products"));
-        console.log(old_data);
-        let repeated_id = false;
-        old_data.forEach(i => {
-            if (i === newid) {
-                repeated_id = true;
-            }
-        })
-        if (repeated_id === false) {
-            old_data.push(newid);
-
-        }
-        localStorage.setItem("products", JSON.stringify(old_data));
-        alert("added to cart");
-        let prod_added = JSON.parse(localStorage.getItem("products"));
-        $(".products-added").html(prod_added.length);
-    })
-
-    if ($(".details").length > 0) {
+    if (!(product_details === null)) {
         url = new URL(window.location.href),
             urlstring = url.search.slice(1),
             searchurlparam = new URLSearchParams(urlstring),
             p_id = searchurlparam.get('id') - 1;
-        $(".product-detail-info").append(`
+
+        let product_info =
+            `
     <ul class="shopping-item-info"> 
            <li class="shopping-item-image">
 <a href="details.html?id=${products[p_id].id}" title="Get Details" target="_self">
@@ -139,7 +153,6 @@ $(document).ready(function () {
         <p class="product-description">${products[p_id].description}</p>
  </li>
  </ul>    
-    `);
+    `
+        product_detail_info.innerHTML += product_info;
     }
-
-})
