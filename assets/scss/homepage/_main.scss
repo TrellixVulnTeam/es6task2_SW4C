@@ -15,9 +15,9 @@ main {
       }
 
       @at-root
-      .shopping-items {
+      .shopping-items,.added-items {
           @include flex_properties(normal,normal);
-      
+      @at-root
       .shopping-item-info {
           @include flex_properties(normal,center);
           flex-direction: column;

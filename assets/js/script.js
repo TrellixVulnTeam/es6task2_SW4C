@@ -32,41 +32,17 @@ let products=[
     }
 ];
 
-// let prod_added = JSON.parse(localStorage.getItem('products'));
-// if(prod_added !== null) {
-//     $(".products-added").html(prod_added.length);
-//         prod_added.forEach(i=>{
-//         $(".added-items").append(`
-//         <ul class="shopping-item-info"> 
-//                <li class="shopping-item-image">
-//     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
-//         <img src="${products[i].image}" alt="Product">
-//     </a>
-//     </li>
-//     <li>
-//      <a href="details.html?id="${products[i].name}" title="${products[i].name}" target="_self" class="pagination-title">${products[i].name}</a>
-//      </li>  
-//      <li>
-//      <a href="details.html?id="${products[i].id}" title="Get Details" target="_self" class="view-details">
-//             view details
-//      </a>
-//      </li>
-//      </ul>    
-//         `);
-//     })
-// }else {
-//     $(".products-added").html("0");
-
-// }
-
-if($('.home-section').length > 0){
-    $(".shopping-items").html("");
-for(i=0;i<=products.length-1;i++) {
-  $(".shopping-items").append(
-
-    `   <ul class="shopping-item-info"> 
+let prod_added = JSON.parse(localStorage.getItem('products'));
+if(prod_added !== null) {
+    prod_added.forEach(i=>{
+        console.log(i);
+    })
+    $(".products-added").html(prod_added.length);
+        prod_added.forEach(i => {
+        $(".added-items").append(`
+        <ul class="shopping-item-info"> 
                <li class="shopping-item-image">
-    <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
+    <a href="details.html?id=${products[i].id}" title="Get Details" target="_self">
         <img src="${products[i].image}" alt="Product">
     </a>
     </li>
@@ -78,7 +54,34 @@ for(i=0;i<=products.length-1;i++) {
             view details
      </a>
      </li>
-     <button class="addcart" data-id="${products[i].id}">Add to cart</button>
+     </ul>    
+        `);
+    })
+}else {
+    $(".products-added").html("0");
+
+}
+
+if($('.home-section').length > 0){
+    $(".shopping-items").html("");
+for(i=0;i<=products.length-1;i++) {
+  $(".shopping-items").append(
+
+    `   <ul class="shopping-item-info"> 
+               <li class="shopping-item-image">
+    <a href="details.html?id=${products[i].id}" title="Get Details" target="_self">
+        <img src="${products[i].image}" alt="Product">
+    </a>
+    </li>
+    <li>
+     <a href="details.html?id="${products[i].name}" title="${products[i].name}" target="_self" class="pagination-title">${products[i].name}</a>
+     </li>  
+     <li>
+     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self" class="view-details">
+            view details
+     </a>
+     </li>
+     <button class="addcart" data-id="${products[i].id - 1}">Add to cart</button>
      </ul>
      `);  
 }
@@ -107,6 +110,13 @@ $(".shopping-items").on("click","button",function(){
     let prod_added = JSON.parse(localStorage.getItem("products"));
      $(".products-added").html(prod_added.length);
 })
+
+if($(".details").length > 0) {
+    url = new URL(window.location.href),
+    urlstring = url.search.slice(1),
+    searchurlparam = new URLSearchParams(urlstring),
+    p_id = searchurlparam.get('id')
+}
 
 })
 

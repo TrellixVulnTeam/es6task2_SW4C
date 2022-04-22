@@ -222,13 +222,13 @@ main {
     color: #ff0000;
     font-size: 25px;
     text-align: center; }
-  .shopping-items {
+  .shopping-items, .added-items {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     justify-content: normal;
     align-items: normal; }
-    .shopping-items .shopping-item-info {
+    .shopping-item-info {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
