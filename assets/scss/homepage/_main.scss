@@ -1,29 +1,73 @@
 main {
     width: 100%;
     min-height: 100vh;
-    color: map-get($colors,black_color);
+    color: map-get($colors, black_color);
 
     .wrapper {
-        @include pd_values(30px,30px);
-      }
-
-      h2 {
-          @include mg-rule(bottom,30px);
-          color: map-get($colors ,red-color);
-          font-size: map-get($font,font-xxv);
-          text-align: center;
-      }
-
-      @at-root
-      .shopping-items,.added-items {
-          @include flex_properties(normal,normal);
-      @at-root
-      .shopping-item-info {
-          @include flex_properties(normal,center);
-          flex-direction: column;
-          row-gap: 20px;
-      }
+        @include pd_values(30px, 30px);
     }
+
+    h2 {
+        @include mg-rule(bottom, 30px);
+        color: map-get($colors, red-color);
+        font-size: map-get($font, font-xxv);
+        text-align: center;
     }
-  
-   
+
+    @at-root .shopping-items,
+    .added-items {
+        @include flex_properties(space-around, normal);
+        flex-wrap: wrap;
+        row-gap: 20px;
+
+        ul {
+            li {
+                a {
+                    color: map-get($colors, dark-pink);
+                    @include transition-effect();
+
+                    &:hover {
+                        @include hover-effect();
+                    }
+                }
+
+                .view-details {
+                    color: map-get($colors, orange-red);
+                }
+            }
+        }
+
+        @at-root .addcart {
+            @include pd_values(2px, 10px);
+            background-color: map-get($colors, dark-green);
+            color: map-get($colors, primary_color);
+            @include transition-effect();
+
+            &:hover {
+                @include hover-effect();
+                background-color: map-get($colors,marine-color);
+            }
+        }
+
+    }
+
+    @at-root .shopping-item-info {
+        @include flex_properties(normal, center);
+        flex-direction: column;
+        row-gap: 20px;
+
+        @at-root .price {
+            @include pd-values(10px, 10px);
+            background-color: map-get($colors, dark-green);
+            color: map-get($colors, wheat-color);
+
+        }
+
+        @at-root .product-description {
+            color: map-get($colors, orange-red);
+        }
+
+    }
+
+
+}

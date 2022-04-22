@@ -201,13 +201,63 @@ li {
 
 header {
   padding: 10px 0;
-  background-color: #90B045; }
+  background-color: #bdb76b; }
   header .wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    @media screen and (max-width: 995px) {
+      header .wrapper {
+        flex-direction: column;
+        row-gap: 10px; } }
+  .logo a {
+    color: #14466E;
+    font-size: 25px; }
+  .menus {
+    flex-basis: 15%; }
+    .menus ul {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .menus ul li a {
+        color: #000;
+        transition: All ease-in-out 0.3s;
+        -webkit-transition: All ease-in-out 0.3s;
+        -moz-transition: All ease-in-out 0.3s;
+        -ms-transition: All ease-in-out 0.3s;
+        -o-transition: All ease-in-out 0.3s; }
+        .menus ul li a:hover {
+          color: #ff0000; }
+      .menus ul li:first-child a {
+        text-indent: -9999px; }
+        .menus ul li:first-child a::before {
+          content: "";
+          float: right;
+          font-family: "fontAwesome";
+          font-size: 20px;
+          text-indent: 0; }
+      .menus ul li:last-child a {
+        padding: 6px 6px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+        background-color: #f5deb3;
+        white-space: nowrap; }
+    @media screen and (max-width: 1280px) {
+      .menus {
+        flex-basis: 18%; } }
+    @media screen and (max-width: 995px) {
+      .menus {
+        width: 25%; } }
+    @media screen and (max-width: 768px) {
+      .menus {
+        width: 50%; } }
   h1 {
     font-size: 24px; }
 
@@ -222,51 +272,119 @@ main {
     color: #ff0000;
     font-size: 25px;
     text-align: center; }
-  .shopping-items, .added-items {
+  .shopping-items,
+  .added-items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-around;
+    align-items: normal;
+    flex-wrap: wrap;
+    row-gap: 20px; }
+    .shopping-items ul li a,
+    .added-items ul li a {
+      color: #ff1493;
+      transition: All ease-in-out 0.3s;
+      -webkit-transition: All ease-in-out 0.3s;
+      -moz-transition: All ease-in-out 0.3s;
+      -ms-transition: All ease-in-out 0.3s;
+      -o-transition: All ease-in-out 0.3s; }
+      .shopping-items ul li a:hover,
+      .added-items ul li a:hover {
+        color: #ff0000; }
+    .shopping-items ul li .view-details,
+    .added-items ul li .view-details {
+      color: #ff4500; }
+    .addcart {
+      padding: 2px 10px;
+      background-color: #286D84;
+      color: #fff;
+      transition: All ease-in-out 0.3s;
+      -webkit-transition: All ease-in-out 0.3s;
+      -moz-transition: All ease-in-out 0.3s;
+      -ms-transition: All ease-in-out 0.3s;
+      -o-transition: All ease-in-out 0.3s; }
+      .addcart:hover {
+        color: #ff0000;
+        background-color: #7fffd4; }
+  .shopping-item-info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     justify-content: normal;
-    align-items: normal; }
-    .shopping-item-info {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      justify-content: normal;
-      align-items: center;
-      flex-direction: column;
-      row-gap: 20px; }
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px; }
+    .price {
+      padding: 10px 10px;
+      background-color: #286D84;
+      color: #f5deb3; }
+    .product-description {
+      color: #ff4500; }
 
 footer {
   padding: 20px 0;
-  background-color: #90B045; }
+  background-color: #bdb76b; }
   footer .wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
     align-items: center; }
-  .social-links li a {
-    text-indent: -9999px; }
-    .social-links li a::before {
-      color: #14466E; }
-  .social-links li:first-child a:before {
-    content: "";
-    float: right;
-    font-family: "fontAwesome";
-    font-size: 20px;
-    text-indent: 0; }
-  .social-links li:nth-child(2) a::before {
-    content: "";
-    float: right;
-    font-family: "fontAwesome";
-    font-size: 20px;
-    text-indent: 0; }
-  .social-links li:last-child a::before {
-    content: "";
-    float: right;
-    font-family: "fontAwesome";
-    font-size: 20px;
-    text-indent: 0; }
+    @media screen and (max-width: 995px) {
+      footer .wrapper {
+        flex-direction: column;
+        row-gap: 10px; } }
+  .social-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 8%; }
+    .social-links li a {
+      text-indent: -9999px; }
+      .social-links li a::before {
+        color: #14466E; }
+      .social-links li a::before {
+        transition: All ease-in-out 0.3s;
+        -webkit-transition: All ease-in-out 0.3s;
+        -moz-transition: All ease-in-out 0.3s;
+        -ms-transition: All ease-in-out 0.3s;
+        -o-transition: All ease-in-out 0.3s; }
+      .social-links li a:hover:before {
+        color: #ff0000; }
+    .social-links li:first-child a:before {
+      content: "";
+      float: right;
+      font-family: "fontAwesome";
+      font-size: 20px;
+      text-indent: 0; }
+    .social-links li:nth-child(2) a::before {
+      content: "";
+      float: right;
+      font-family: "fontAwesome";
+      font-size: 20px;
+      text-indent: 0; }
+    .social-links li:last-child a::before {
+      content: "";
+      float: right;
+      font-family: "fontAwesome";
+      font-size: 20px;
+      text-indent: 0; }
+    @media screen and (max-width: 995px) {
+      .social-links {
+        width: 15%; } }
+  .footer-links li a {
+    color: #0000ff;
+    font-size: 14px;
+    transition: All ease-in-out 0.3s;
+    -webkit-transition: All ease-in-out 0.3s;
+    -moz-transition: All ease-in-out 0.3s;
+    -ms-transition: All ease-in-out 0.3s;
+    -o-transition: All ease-in-out 0.3s; }
+    .footer-links li a:hover {
+      color: #ff0000; }
   .copyright {
+    color: #0000ff;
     font-size: 14px; }

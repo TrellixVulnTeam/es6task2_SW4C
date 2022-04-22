@@ -1,15 +1,28 @@
 footer {
     @include pd_values(20px, 0);
-    background-color: map-get($colors, faint-green);
+    background-color: map-get($colors, dark-khakki);
     .wrapper {
         @include flex_properties(space-between,center);
+        @include reverse_breakpoint("mini-ipad") {
+            flex-direction: column;
+            row-gap: 10px;
+        }
     }
     @at-root .social-links {
+        @include flex_properties(space-between,center);
+        flex-basis: 8%;
         li {
             a {
                 text-indent: -9999px;
                 &::before {
                     color: map-get($colors, black-blue );
+                }
+                &::before{
+                @include transition-effect();
+                }
+
+                &:hover:before {
+                    @include hover-effect();
                 }
             }
 
@@ -23,9 +36,27 @@ footer {
                 @include font-icon("\f099", 20px);
             }
         }
+        @include reverse_breakpoint("mini-ipad") {
+            width: 15%;
+        }
     }
+
+    @at-root
+     .footer-links {
+         li {
+             a {
+                 color: map-get($colors, blue-color);
+                 font-size: map-get($font,font-xiv);
+                 @include transition-effect();
+                 &:hover {
+                     @include hover-effect();
+                 }
+             }
+         }
+     }
     @at-root
     .copyright {
+        color: map-get($colors,blue-color);
         font-size: map-get($font,font-xiv);
     }
 }

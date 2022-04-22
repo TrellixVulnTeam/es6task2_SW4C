@@ -85,7 +85,9 @@ $(document).ready(function () {
             view details
      </a>
      </li>
+     <li>
      <button class="addcart" data-id="${products[i].id - 1}">Add to cart</button>
+     </li>
      </ul>
      `);
         }
