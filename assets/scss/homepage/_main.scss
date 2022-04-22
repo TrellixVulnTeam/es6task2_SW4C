@@ -1,0 +1,29 @@
+main {
+    width: 100%;
+    min-height: 100vh;
+    color: map-get($colors,black_color);
+
+    .wrapper {
+        @include pd_values(30px,30px);
+      }
+
+      h2 {
+          @include mg-rule(bottom,30px);
+          color: map-get($colors ,red-color);
+          font-size: map-get($font,font-xxv);
+          text-align: center;
+      }
+
+      @at-root
+      .shopping-items,.added-items {
+          @include flex_properties(normal,normal);
+      @at-root
+      .shopping-item-info {
+          @include flex_properties(normal,center);
+          flex-direction: column;
+          row-gap: 20px;
+      }
+    }
+    }
+  
+   

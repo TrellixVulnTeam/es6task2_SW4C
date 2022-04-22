@@ -2,45 +2,47 @@ $(document).ready(function(){
 let products=[
     {
         "id":1,
-        "image":"img1.jpg",
+        "image":"assets/images/1.webp",
         "name":"product 1",
         "price":100
     },
     {
         "id":2,
-        "image":"img1.jpg",
+        "image":"assets/images/2.jpeg",
         "name":"product 2",
         "price":200
     },
     {
         "id":3,
-        "image":"img1.jpg",
+        "image":"assets/images/3.jpg",
         "name":"product 3",
         "price":300
     },
     {
         "id":4,
-        "image":"img1.jpg",
+        "image":"assets/images/4.jpeg",
         "name":"product 4",
         "price":400
     },
     {
         "id":5,
-        "image":"img1.jpg",
+        "image":"assets/images/5.jpg",
         "name":"product 5",
         "price":500
     }
 ];
 
 let prod_added = JSON.parse(localStorage.getItem('products'));
-console.log(prod_added);
 if(prod_added !== null) {
+    prod_added.forEach(i=>{
+        console.log(i);
+    })
     $(".products-added").html(prod_added.length);
-        prod_added.forEach(i=>{
+        prod_added.forEach(i => {
         $(".added-items").append(`
         <ul class="shopping-item-info"> 
                <li class="shopping-item-image">
-    <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
+    <a href="details.html?id=${products[i].id}" title="Get Details" target="_self">
         <img src="${products[i].image}" alt="Product">
     </a>
     </li>
@@ -67,7 +69,7 @@ for(i=0;i<=products.length-1;i++) {
 
     `   <ul class="shopping-item-info"> 
                <li class="shopping-item-image">
-    <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
+    <a href="details.html?id=${products[i].id}" title="Get Details" target="_self">
         <img src="${products[i].image}" alt="Product">
     </a>
     </li>
@@ -79,7 +81,7 @@ for(i=0;i<=products.length-1;i++) {
             view details
      </a>
      </li>
-     <button class="addcart" data-id="${products[i].id}">Add to cart</button>
+     <button class="addcart" data-id="${products[i].id - 1}">Add to cart</button>
      </ul>
      `);  
 }
@@ -108,6 +110,13 @@ $(".shopping-items").on("click","button",function(){
     let prod_added = JSON.parse(localStorage.getItem("products"));
      $(".products-added").html(prod_added.length);
 })
+
+if($(".details").length > 0) {
+    url = new URL(window.location.href),
+    urlstring = url.search.slice(1),
+    searchurlparam = new URLSearchParams(urlstring),
+    p_id = searchurlparam.get('id')
+}
 
 })
 
