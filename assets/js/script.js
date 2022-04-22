@@ -133,7 +133,7 @@ $(document).ready(function () {
  <a href="details.html?id=${products[p_id].id}" title="${products[p_id].name}" target="_self" class="product-title">${products[p_id].name}</a>
  </li>  
  <li>
- price:${products[p_id].price}
+ <span class="price">price:${products[p_id].price}</span>
  </li>
  <li>
         <p class="product-description">${products[p_id].description}</p>
