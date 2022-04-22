@@ -4,31 +4,36 @@ let products=[
         "id":1,
         "image":"assets/images/1.webp",
         "name":"product 1",
-        "price":100
+        "price":100,
+        "description":"This is product 1,looks Awesome try this "
     },
     {
         "id":2,
         "image":"assets/images/2.jpeg",
         "name":"product 2",
-        "price":200
+        "price":200,
+        "description":"This is product 2,looks Awesome try this "
     },
     {
         "id":3,
         "image":"assets/images/3.jpg",
         "name":"product 3",
-        "price":300
+        "price":300,
+        "description":"This is product 3,looks Awesome try this "
     },
     {
         "id":4,
         "image":"assets/images/4.jpeg",
         "name":"product 4",
-        "price":400
+        "price":400,
+        "description":"This is product 4,looks Awesome try this "
     },
     {
         "id":5,
         "image":"assets/images/5.jpg",
         "name":"product 5",
-        "price":500
+        "price":500,
+        "description":"This is product 5,looks Awesome try this "
     }
 ];
 
@@ -47,10 +52,10 @@ if(prod_added !== null) {
     </a>
     </li>
     <li>
-     <a href="details.html?id="${products[i].name}" title="${products[i].name}" target="_self" class="pagination-title">${products[i].name}</a>
+     <a href="details.html?id=${products[i].id}" title="${products[i].name}" target="_self" class="product-title">${products[i].name}</a>
      </li>  
      <li>
-     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self" class="view-details">
+     <a href="details.html?id=${products[i].id}" title="Get Details" target="_self" class="view-details">
             view details
      </a>
      </li>
@@ -74,10 +79,10 @@ for(i=0;i<=products.length-1;i++) {
     </a>
     </li>
     <li>
-     <a href="details.html?id="${products[i].name}" title="${products[i].name}" target="_self" class="pagination-title">${products[i].name}</a>
+     <a href="details.html?id=${products[i].id}" title="${products[i].name}" target="_self" class="product-title">${products[i].name}</a>
      </li>  
      <li>
-     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self" class="view-details">
+     <a href="details.html?id=${products[i].id}" title="Get Details" target="_self" class="view-details">
             view details
      </a>
      </li>
@@ -115,8 +120,55 @@ if($(".details").length > 0) {
     url = new URL(window.location.href),
     urlstring = url.search.slice(1),
     searchurlparam = new URLSearchParams(urlstring),
-    p_id = searchurlparam.get('id')
+    p_id = searchurlparam.get('id')-1;
+    $(".product-detail-info").append(
+
+        `   <ul class="shopping-item-info"> 
+                   <li class="shopping-item-image">
+        <a href="details.html?id=${products[p_id].id}" title="Get Details" target="_self">
+            <img src="${products[p_id].image}" alt="Product">
+        </a>
+        </li>
+        <li>
+         <a href="details.html?id=${products[p_id].id}" title="${products[p_id].name}" target="_self" class="product-title">${products[p_id].name}</a>
+         </li>  
+         <li>
+         price:${products[p_id].price}
+         </li>
+         <li>
+            <p class="product-description">${products[p_id].description}</p>
+         </li>
+         </ul>
+         `);     
 }
+
+//slick slider code 
+
+$('.shoopng-items , .added-items').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
+
 
 })
 
