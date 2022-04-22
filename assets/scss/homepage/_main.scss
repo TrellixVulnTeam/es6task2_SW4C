@@ -1,0 +1,16 @@
+main {
+    width: 100%;
+    min-height: 100vh;
+    color: map-get($colors,black_color);
+
+    .wrapper {
+        @include pd_values(30px,30px);
+      }
+
+      h2 {
+          font-size: map-get($font,font-xxii);
+          text-align: center;
+      }
+    }
+  
+   

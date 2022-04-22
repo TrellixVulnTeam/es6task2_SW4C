@@ -1,0 +1,13 @@
+header {
+    @include pd_values(10px,0);
+    background-color: map-get($colors, faint-green);
+
+    .wrapper {
+        @include flex_properties(space-between,center);
+    }
+
+    @at-root
+    h1 {
+        font-size: 24px;
+    }
+}
