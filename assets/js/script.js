@@ -32,13 +32,16 @@ let products=[
     }
 ];
 
-if($('.home-section')){
-    $(".shopping-item").html("");
-for(i=0;i<=products.length-1;i++) {
-  $(".shopping-item").append(
-    `            <li class="page-item-image">
+let prod_added = JSON.parse(localStorage.getItem('products'));
+console.log(prod_added);
+if(prod_added !== null) {
+    $(".products-added").html(prod_added.length);
+        prod_added.forEach(i=>{
+        $(".added-items").append(`
+        <ul class="shopping-item-info"> 
+               <li class="shopping-item-image">
     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
-        <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Product">
+        <img src="${products[i].image}" alt="Product">
     </a>
     </li>
     <li>
@@ -48,13 +51,42 @@ for(i=0;i<=products.length-1;i++) {
      <a href="details.html?id="${products[i].id}" title="Get Details" target="_self" class="view-details">
             view details
      </a>
+     </li>
+     </ul>    
+        `);
+    })
+}else {
+    $(".products-added").html("0");
+
+}
+
+if($('.home-section').length > 0){
+    $(".shopping-items").html("");
+for(i=0;i<=products.length-1;i++) {
+  $(".shopping-items").append(
+
+    `   <ul class="shopping-item-info"> 
+               <li class="shopping-item-image">
+    <a href="details.html?id="${products[i].id}" title="Get Details" target="_self">
+        <img src="${products[i].image}" alt="Product">
+    </a>
+    </li>
+    <li>
+     <a href="details.html?id="${products[i].name}" title="${products[i].name}" target="_self" class="pagination-title">${products[i].name}</a>
+     </li>  
+     <li>
+     <a href="details.html?id="${products[i].id}" title="Get Details" target="_self" class="view-details">
+            view details
+     </a>
+     </li>
      <button class="addcart" data-id="${products[i].id}">Add to cart</button>
-     </li>`);  
+     </ul>
+     `);  
 }
 }
 
 
-$(".page-item").on("click","button",function(){
+$(".shopping-items").on("click","button",function(){
     if(!(localStorage.getItem("products"))) {
         localStorage.setItem("products",'[]');
     }
@@ -73,16 +105,9 @@ $(".page-item").on("click","button",function(){
     }
     localStorage.setItem("products",JSON.stringify(old_data));
     alert("added to cart");
-
+    let prod_added = JSON.parse(localStorage.getItem("products"));
+     $(".products-added").html(prod_added.length);
 })
-
-
-if($(".added-products")){
-    let addedproducts = JSON.parse(localStorage.getItem("products"));
-    
-}
-
-
 
 })
 
