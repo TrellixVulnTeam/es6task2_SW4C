@@ -8,9 +8,22 @@ main {
       }
 
       h2 {
-          font-size: map-get($font,font-xxii);
+          @include mg-rule(bottom,30px);
+          color: map-get($colors ,red-color);
+          font-size: map-get($font,font-xxv);
           text-align: center;
       }
+
+      @at-root
+      .shopping-items {
+          @include flex_properties(normal,normal);
+      
+      .shopping-item-info {
+          @include flex_properties(normal,center);
+          flex-direction: column;
+          row-gap: 20px;
+      }
+    }
     }
   
    
