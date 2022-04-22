@@ -19,10 +19,16 @@ footer {
                 }
                 &::before{
                 @include transition-effect();
+                @include reverse_breakpoint("tablet") {
+                    color: map-get($colors, black-blue );
+                }
                 }
 
                 &:hover:before {
                     @include hover-effect();
+                    @include reverse_breakpoint("tablet") {
+                        color: map-get($colors, black-blue );
+                    }
                 }
             }
 
@@ -50,6 +56,9 @@ footer {
                  @include transition-effect();
                  &:hover {
                      @include hover-effect();
+                     @include reverse_breakpoint("tablet") {
+                        color: map-get($colors, blue-color);
+                     }
                  }
              }
          }

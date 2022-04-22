@@ -197,6 +197,9 @@ a {
 a:hover {
     @include hover-effect();
     @include transition-effect();
+    @include reverse_breakpoint("tablet") {
+        color: map-get($colors,dark-pink);
+    }
 }
 
 li {

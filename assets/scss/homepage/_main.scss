@@ -28,11 +28,19 @@ main {
 
                     &:hover {
                         @include hover-effect();
+                        @include reverse_breakpoint("tablet") {
+                            color: map-get($colors, dark-pink);
+                        }
                     }
                 }
 
                 .view-details {
                     color: map-get($colors, orange-red);
+                    &:hover {
+                        @include reverse_breakpoint("tablet") {
+                            color: map-get($colors, orange-red);
+                        }
+                    }
                 }
             }
         }
@@ -46,6 +54,10 @@ main {
             &:hover {
                 @include hover-effect();
                 background-color: map-get($colors,marine-color);
+                @include reverse_breakpoint("tablet") {
+                    background-color: map-get($colors, dark-green);
+                    color: map-get($colors, primary_color);
+                }
             }
         }
 
@@ -55,6 +67,11 @@ main {
         @include flex_properties(normal, center);
         flex-direction: column;
         row-gap: 20px;
+
+        @at-root
+        .product-title {
+            color: map-get($colors,dark-pink);
+        }
 
         @at-root .price {
             @include pd-values(10px, 10px);

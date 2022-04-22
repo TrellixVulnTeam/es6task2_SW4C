@@ -32,6 +32,13 @@ header {
 
                     &:hover {
                         @include hover-effect();
+                        @include reverse_breakpoint("tablet") {
+                            color: initial;
+                        }
+                    }
+
+                    @include reverse_breakpoint("tablet") {
+                        color: map-get($colors, black_color);
                     }
                 }
 
@@ -40,6 +47,13 @@ header {
 
                     &::before {
                         @include font-icon("\f015", 20px);
+                       
+                        }
+                        &:hover:before {
+                                @include reverse_breakpoint("tablet") {
+                                    color: map-get($colors, black_color);
+                                
+                        }
                     }
 
                 }
